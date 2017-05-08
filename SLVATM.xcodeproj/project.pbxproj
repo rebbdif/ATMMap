@@ -1,0 +1,499 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		63112DFD1EC0C0C100920A75 /* SLVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63112DFC1EC0C0C100920A75 /* SLVTableViewCell.m */; };
+		63112E011EC0C10A00920A75 /* SLVTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63112E001EC0C10A00920A75 /* SLVTableModel.m */; };
+		63112E041EC0C37F00920A75 /* SLVNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 63112E031EC0C37F00920A75 /* SLVNetworkService.m */; };
+		63ACEF831EC0A87B007C0D41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEF821EC0A87B007C0D41 /* main.m */; };
+		63ACEF861EC0A87B007C0D41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEF851EC0A87B007C0D41 /* AppDelegate.m */; };
+		63ACEF8E1EC0A87B007C0D41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63ACEF8D1EC0A87B007C0D41 /* Assets.xcassets */; };
+		63ACEF911EC0A87B007C0D41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63ACEF8F1EC0A87B007C0D41 /* LaunchScreen.storyboard */; };
+		63ACEF9C1EC0A87B007C0D41 /* SLVATMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEF9B1EC0A87B007C0D41 /* SLVATMTests.m */; };
+		63ACEFA91EC0A8FF007C0D41 /* SLVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEFA81EC0A8FF007C0D41 /* SLVTabBarController.m */; };
+		63ACEFAD1EC0A931007C0D41 /* SLVMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEFAC1EC0A931007C0D41 /* SLVMapViewController.m */; };
+		63ACEFB01EC0A954007C0D41 /* SVLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEFAF1EC0A954007C0D41 /* SVLTableViewController.m */; };
+		63ACEFB31EC0AB43007C0D41 /* SLVATMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEFB21EC0AB43007C0D41 /* SLVATMModel.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		63ACEF981EC0A87B007C0D41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63ACEF761EC0A87B007C0D41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63ACEF7D1EC0A87B007C0D41;
+			remoteInfo = SLVATM;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		63112DFB1EC0C0C100920A75 /* SLVTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVTableViewCell.h; path = Views/SLVTableViewCell.h; sourceTree = "<group>"; };
+		63112DFC1EC0C0C100920A75 /* SLVTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVTableViewCell.m; path = Views/SLVTableViewCell.m; sourceTree = "<group>"; };
+		63112DFF1EC0C10A00920A75 /* SLVTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVTableModel.h; path = Models/SLVTableModel.h; sourceTree = "<group>"; };
+		63112E001EC0C10A00920A75 /* SLVTableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVTableModel.m; path = Models/SLVTableModel.m; sourceTree = "<group>"; };
+		63112E021EC0C37F00920A75 /* SLVNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVNetworkService.h; path = Services/SLVNetworkService.h; sourceTree = "<group>"; };
+		63112E031EC0C37F00920A75 /* SLVNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVNetworkService.m; path = Services/SLVNetworkService.m; sourceTree = "<group>"; };
+		63ACEF7E1EC0A87B007C0D41 /* SLVATM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLVATM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63ACEF821EC0A87B007C0D41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		63ACEF841EC0A87B007C0D41 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		63ACEF851EC0A87B007C0D41 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		63ACEF8D1EC0A87B007C0D41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63ACEF901EC0A87B007C0D41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		63ACEF921EC0A87B007C0D41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63ACEF971EC0A87B007C0D41 /* SLVATMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLVATMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63ACEF9B1EC0A87B007C0D41 /* SLVATMTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLVATMTests.m; sourceTree = "<group>"; };
+		63ACEF9D1EC0A87B007C0D41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63ACEFA71EC0A8FF007C0D41 /* SLVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVTabBarController.h; path = Controllers/SLVTabBarController.h; sourceTree = "<group>"; };
+		63ACEFA81EC0A8FF007C0D41 /* SLVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVTabBarController.m; path = Controllers/SLVTabBarController.m; sourceTree = "<group>"; };
+		63ACEFAB1EC0A931007C0D41 /* SLVMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVMapViewController.h; path = Controllers/SLVMapViewController.h; sourceTree = "<group>"; };
+		63ACEFAC1EC0A931007C0D41 /* SLVMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVMapViewController.m; path = Controllers/SLVMapViewController.m; sourceTree = "<group>"; };
+		63ACEFAE1EC0A954007C0D41 /* SVLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVLTableViewController.h; path = Controllers/SVLTableViewController.h; sourceTree = "<group>"; };
+		63ACEFAF1EC0A954007C0D41 /* SVLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVLTableViewController.m; path = Controllers/SVLTableViewController.m; sourceTree = "<group>"; };
+		63ACEFB11EC0AB43007C0D41 /* SLVATMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVATMModel.h; path = Models/SLVATMModel.h; sourceTree = "<group>"; };
+		63ACEFB21EC0AB43007C0D41 /* SLVATMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVATMModel.m; path = Models/SLVATMModel.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63ACEF7B1EC0A87B007C0D41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63ACEF941EC0A87B007C0D41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		63112DFE1EC0C0CF00920A75 /* VIews */ = {
+			isa = PBXGroup;
+			children = (
+				63112DFB1EC0C0C100920A75 /* SLVTableViewCell.h */,
+				63112DFC1EC0C0C100920A75 /* SLVTableViewCell.m */,
+			);
+			name = VIews;
+			sourceTree = "<group>";
+		};
+		63112E051EC0C38A00920A75 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				63112E021EC0C37F00920A75 /* SLVNetworkService.h */,
+				63112E031EC0C37F00920A75 /* SLVNetworkService.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		63ACEF751EC0A87B007C0D41 = {
+			isa = PBXGroup;
+			children = (
+				63ACEF801EC0A87B007C0D41 /* SLVATM */,
+				63ACEF9A1EC0A87B007C0D41 /* SLVATMTests */,
+				63ACEF7F1EC0A87B007C0D41 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		63ACEF7F1EC0A87B007C0D41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63ACEF7E1EC0A87B007C0D41 /* SLVATM.app */,
+				63ACEF971EC0A87B007C0D41 /* SLVATMTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63ACEF801EC0A87B007C0D41 /* SLVATM */ = {
+			isa = PBXGroup;
+			children = (
+				63ACEFB41EC0AB47007C0D41 /* Models */,
+				63112DFE1EC0C0CF00920A75 /* VIews */,
+				63ACEFAA1EC0A905007C0D41 /* Controllers */,
+				63ACEFA61EC0A899007C0D41 /* Application */,
+				63ACEF811EC0A87B007C0D41 /* Supporting Files */,
+				63112E051EC0C38A00920A75 /* Services */,
+			);
+			path = SLVATM;
+			sourceTree = "<group>";
+		};
+		63ACEF811EC0A87B007C0D41 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63ACEF821EC0A87B007C0D41 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63ACEF9A1EC0A87B007C0D41 /* SLVATMTests */ = {
+			isa = PBXGroup;
+			children = (
+				63ACEF9B1EC0A87B007C0D41 /* SLVATMTests.m */,
+				63ACEF9D1EC0A87B007C0D41 /* Info.plist */,
+			);
+			path = SLVATMTests;
+			sourceTree = "<group>";
+		};
+		63ACEFA61EC0A899007C0D41 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				63ACEF841EC0A87B007C0D41 /* AppDelegate.h */,
+				63ACEF851EC0A87B007C0D41 /* AppDelegate.m */,
+				63ACEF8D1EC0A87B007C0D41 /* Assets.xcassets */,
+				63ACEF8F1EC0A87B007C0D41 /* LaunchScreen.storyboard */,
+				63ACEF921EC0A87B007C0D41 /* Info.plist */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		63ACEFAA1EC0A905007C0D41 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				63ACEFAB1EC0A931007C0D41 /* SLVMapViewController.h */,
+				63ACEFAC1EC0A931007C0D41 /* SLVMapViewController.m */,
+				63ACEFAE1EC0A954007C0D41 /* SVLTableViewController.h */,
+				63ACEFAF1EC0A954007C0D41 /* SVLTableViewController.m */,
+				63ACEFA71EC0A8FF007C0D41 /* SLVTabBarController.h */,
+				63ACEFA81EC0A8FF007C0D41 /* SLVTabBarController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		63ACEFB41EC0AB47007C0D41 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				63112DFF1EC0C10A00920A75 /* SLVTableModel.h */,
+				63112E001EC0C10A00920A75 /* SLVTableModel.m */,
+				63ACEFB11EC0AB43007C0D41 /* SLVATMModel.h */,
+				63ACEFB21EC0AB43007C0D41 /* SLVATMModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63ACEF7D1EC0A87B007C0D41 /* SLVATM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63ACEFA01EC0A87B007C0D41 /* Build configuration list for PBXNativeTarget "SLVATM" */;
+			buildPhases = (
+				63ACEF7A1EC0A87B007C0D41 /* Sources */,
+				63ACEF7B1EC0A87B007C0D41 /* Frameworks */,
+				63ACEF7C1EC0A87B007C0D41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SLVATM;
+			productName = SLVATM;
+			productReference = 63ACEF7E1EC0A87B007C0D41 /* SLVATM.app */;
+			productType = "com.apple.product-type.application";
+		};
+		63ACEF961EC0A87B007C0D41 /* SLVATMTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63ACEFA31EC0A87B007C0D41 /* Build configuration list for PBXNativeTarget "SLVATMTests" */;
+			buildPhases = (
+				63ACEF931EC0A87B007C0D41 /* Sources */,
+				63ACEF941EC0A87B007C0D41 /* Frameworks */,
+				63ACEF951EC0A87B007C0D41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63ACEF991EC0A87B007C0D41 /* PBXTargetDependency */,
+			);
+			name = SLVATMTests;
+			productName = SLVATMTests;
+			productReference = 63ACEF971EC0A87B007C0D41 /* SLVATMTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63ACEF761EC0A87B007C0D41 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = serebryanyy;
+				TargetAttributes = {
+					63ACEF7D1EC0A87B007C0D41 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 4BVAFGEHDW;
+						ProvisioningStyle = Automatic;
+					};
+					63ACEF961EC0A87B007C0D41 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 4BVAFGEHDW;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 63ACEF7D1EC0A87B007C0D41;
+					};
+				};
+			};
+			buildConfigurationList = 63ACEF791EC0A87B007C0D41 /* Build configuration list for PBXProject "SLVATM" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 63ACEF751EC0A87B007C0D41;
+			productRefGroup = 63ACEF7F1EC0A87B007C0D41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63ACEF7D1EC0A87B007C0D41 /* SLVATM */,
+				63ACEF961EC0A87B007C0D41 /* SLVATMTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63ACEF7C1EC0A87B007C0D41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63ACEF911EC0A87B007C0D41 /* LaunchScreen.storyboard in Resources */,
+				63ACEF8E1EC0A87B007C0D41 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63ACEF951EC0A87B007C0D41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63ACEF7A1EC0A87B007C0D41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63112E041EC0C37F00920A75 /* SLVNetworkService.m in Sources */,
+				63112E011EC0C10A00920A75 /* SLVTableModel.m in Sources */,
+				63ACEF861EC0A87B007C0D41 /* AppDelegate.m in Sources */,
+				63ACEF831EC0A87B007C0D41 /* main.m in Sources */,
+				63ACEFA91EC0A8FF007C0D41 /* SLVTabBarController.m in Sources */,
+				63ACEFB01EC0A954007C0D41 /* SVLTableViewController.m in Sources */,
+				63112DFD1EC0C0C100920A75 /* SLVTableViewCell.m in Sources */,
+				63ACEFB31EC0AB43007C0D41 /* SLVATMModel.m in Sources */,
+				63ACEFAD1EC0A931007C0D41 /* SLVMapViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63ACEF931EC0A87B007C0D41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63ACEF9C1EC0A87B007C0D41 /* SLVATMTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		63ACEF991EC0A87B007C0D41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63ACEF7D1EC0A87B007C0D41 /* SLVATM */;
+			targetProxy = 63ACEF981EC0A87B007C0D41 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		63ACEF8F1EC0A87B007C0D41 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63ACEF901EC0A87B007C0D41 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		63ACEF9E1EC0A87B007C0D41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		63ACEF9F1EC0A87B007C0D41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		63ACEFA11EC0A87B007C0D41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4BVAFGEHDW;
+				INFOPLIST_FILE = SLVATM/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = serebryanyy.SLVATM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		63ACEFA21EC0A87B007C0D41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4BVAFGEHDW;
+				INFOPLIST_FILE = SLVATM/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = serebryanyy.SLVATM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		63ACEFA41EC0A87B007C0D41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 4BVAFGEHDW;
+				INFOPLIST_FILE = SLVATMTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = serebryanyy.SLVATMTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SLVATM.app/SLVATM";
+			};
+			name = Debug;
+		};
+		63ACEFA51EC0A87B007C0D41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 4BVAFGEHDW;
+				INFOPLIST_FILE = SLVATMTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = serebryanyy.SLVATMTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SLVATM.app/SLVATM";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63ACEF791EC0A87B007C0D41 /* Build configuration list for PBXProject "SLVATM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63ACEF9E1EC0A87B007C0D41 /* Debug */,
+				63ACEF9F1EC0A87B007C0D41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63ACEFA01EC0A87B007C0D41 /* Build configuration list for PBXNativeTarget "SLVATM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63ACEFA11EC0A87B007C0D41 /* Debug */,
+				63ACEFA21EC0A87B007C0D41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63ACEFA31EC0A87B007C0D41 /* Build configuration list for PBXNativeTarget "SLVATMTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63ACEFA41EC0A87B007C0D41 /* Debug */,
+				63ACEFA51EC0A87B007C0D41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63ACEF761EC0A87B007C0D41 /* Project object */;
+}
