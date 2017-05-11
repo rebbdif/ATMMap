@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+@import CoreLocation;
+
+
+
 
 @interface SLVLocationService : NSObject
+
+@property(strong,nonatomic) CLLocation *location;
+@property(strong,nonatomic) CLLocationManager *locationManager;
+
+- (void)getLocationWithCompletionHandler:(void (^)(NSDictionary *parameters))completionHandler;
 
 @end

@@ -11,7 +11,7 @@
 #import "SVLTableViewController.h"
 #import "SLVATMModel.h"
 
-@import GooglePlaces;
+@import GoogleMaps;
 
 @interface AppDelegate ()
 
@@ -21,7 +21,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [GMSPlacesClient provideAPIKey:@"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0"];
+    [GMSServices provideAPIKey:@"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0"];
     self.window= [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     SLVMapViewController *mapViewController =[SLVMapViewController new];
     mapViewController.title=@"map";
