@@ -14,6 +14,7 @@
 @interface SLVTableModel()
 
 @property (strong,nonatomic,readonly) SLVNetworkService *networkService;
+@property (strong,nonatomic) NSString *nextPageToken;
 
 @end
 
@@ -24,6 +25,7 @@
     if(self){
         _atmsArray = [NSArray new];
         _networkService = [SLVNetworkService new];
+        _nextPageToken = @"";
     }
     return self;
 }
@@ -31,7 +33,11 @@
 - (void) downloadAtmArrayWithParameters: (NSDictionary *)parameters withCompletionHandler:(void (^)(NSArray *results))completionHandler{
     CLLocation *location = parameters[@"location"];
     NSString *openNow = parameters [@"opennow"];
-    NSString *pagetoken = parameters[@"pagetoken"];
+    NSString *pagetoken = [NSString stringWithFormat:@"pagetoken=%@",self.nextPageToken];
+    if([self.nextPageToken isEqualToString:@"ended"]){
+        // потому что апи отдает только 60 результатов, потом перестает присылать nextPageToken
+        return;
+    }
     NSString *token = @"AIzaSyC593iluNjtK6A-NYWtD6f9sl10c8I8JQU";
     token = @"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0";
     NSString* url= [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&type=bank&rankby=distance&language=RU&%@%@&key=%@",location.coordinate.latitude,location.coordinate.longitude,openNow,pagetoken,token];
@@ -50,6 +56,11 @@
                 }
                 self.atmsArray = [self.atmsArray arrayByAddingObjectsFromArray:newItems];
                 NSLog(@"sel.atmsarray.count%lu",(unsigned long)self.atmsArray.count);
+                if ([json objectForKey:@"next_page_token"]){
+                    self.nextPageToken = json[@"next_page_token"];
+                }else{
+                    self.nextPageToken = @"ended";
+                }
                 completionHandler(self.atmsArray);
             }
         }
