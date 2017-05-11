@@ -7,77 +7,52 @@
 //
 
 #import "SLVMapViewController.h"
+#import "SLVLocationService.h"
+#import "SLVTableModel.h"
+#import "SLVATMModel.h"
 @import GooglePlaces;
 @import CoreLocation;
+@import GoogleMaps;
 
-@interface SLVMapViewController () 
-@property (strong, nonatomic) UILabel *nameLabel;
-@property (strong, nonatomic) UILabel *addressLabel;
-@property (strong, nonatomic) UIButton *getCurrentPlaceButton;
-@property (strong, nonatomic) GMSPlacesClient *placesClient;
-@property (assign, nonatomic) BOOL showsUserLocation;
-@property (strong ,nonatomic) CLLocationManager *locationManager;
+@interface SLVMapViewController () <GMSMapViewDelegate>
+
+@property (strong,nonatomic) SLVLocationService *slvLocationService;
+@property (strong,nonatomic) SLVTableModel *model;
+
 @end
 
 @implementation SLVMapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor lightGrayColor];
-    CGRect frame = self.view.frame;
-    self.nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(8, 28, CGRectGetWidth(frame)-16, 20)];
-    self.addressLabel = [[UILabel alloc]initWithFrame:CGRectMake(8, 56, CGRectGetWidth(frame)-16, 20)];
-    [self.view addSubview:[self decorateView:self.nameLabel]];
-    [self.view addSubview:[self decorateView:self.addressLabel]];
-    self.getCurrentPlaceButton =[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetWidth(frame)/2-40, CGRectGetHeight(frame)-44-20-8, 80, 20)];
-    [self.getCurrentPlaceButton setTitle:@"Л" forState:UIControlStateNormal];
-    self.getCurrentPlaceButton.backgroundColor = [UIColor redColor];
-    [self.getCurrentPlaceButton addTarget:self action:@selector(getCurrentPlace:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.getCurrentPlaceButton];
-    _placesClient = [GMSPlacesClient sharedClient];
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    if (CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        self.showsUserLocation = YES;
-    } else {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-    
-}
-
-- (UIView *) decorateView: (UIView *) view{
-    view.backgroundColor = [UIColor whiteColor];
-    view.tintColor = [UIColor blackColor];
-    view.layer.borderColor = [UIColor blueColor].CGColor;
-    view.layer.borderWidth = 1;
-    return view;
-}
-
-- (IBAction)getCurrentPlace:(UIButton *)sender {
-    
-    [_placesClient currentPlaceWithCallback:^(GMSPlaceLikelihoodList *placeLikelihoodList, NSError *error){
-        if (error != nil) {
-            NSLog(@"Pick Place error %@", [error localizedDescription]);
-            return;
-        }
-        
-        self.nameLabel.text = @"No current place";
-        self.addressLabel.text = @"";
-        
-        if (placeLikelihoodList != nil) {
-            GMSPlace *place = [[[placeLikelihoodList likelihoods] firstObject] place];
-            if (place != nil) {
-                self.nameLabel.text = place.name;
-                self.addressLabel.text = [[place.formattedAddress componentsSeparatedByString:@", "]
-                                          componentsJoinedByString:@"\n"];
+    self.slvLocationService = [SLVLocationService new];
+    self.model = [SLVTableModel new];
+    __weak typeof(self) weakself=self;
+    [self.slvLocationService getLocationWithCompletionHandler:^(NSDictionary *parameters) {
+        CLLocation *currentLocation = parameters[@"location"];
+        GMSCameraPosition *currentLocationCameraPosition = [GMSCameraPosition cameraWithLatitude:currentLocation.coordinate.latitude longitude:currentLocation.coordinate.longitude zoom:12];
+        [((GMSMapView *)weakself.view) setCamera:currentLocationCameraPosition];
+        [weakself.model downloadAtmArrayWithParameters:parameters withCompletionHandler:^(NSArray *results){
+            for (SLVATMModel *atm in results) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    CLLocationCoordinate2D markerPosition = CLLocationCoordinate2DMake([atm.latitude doubleValue], [atm.longitude doubleValue]);
+                    GMSMarker *marker = [GMSMarker markerWithPosition:markerPosition];
+                    marker.title = atm.name;
+                    marker.map = ((GMSMapView *)weakself.view);
+                });
             }
-        }
+        }];
     }];
 }
 
+- (void)loadView{
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:55.741 longitude:37.621 zoom:12];
+    GMSMapView *mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    mapView.settings.compassButton = YES;
+    mapView.delegate = self;
+    self.view = mapView;
+}
 
 
 @end

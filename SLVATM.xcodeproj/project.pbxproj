@@ -11,6 +11,7 @@
 		63112E011EC0C10A00920A75 /* SLVTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63112E001EC0C10A00920A75 /* SLVTableModel.m */; };
 		63112E041EC0C37F00920A75 /* SLVNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 63112E031EC0C37F00920A75 /* SLVNetworkService.m */; };
 		636E55BC1EC37A0E005D0219 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636E55BB1EC37A0E005D0219 /* Launch Screen.storyboard */; };
+		636E55BF1EC46996005D0219 /* SLVLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 636E55BE1EC46996005D0219 /* SLVLocationService.m */; };
 		63ACEF831EC0A87B007C0D41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEF821EC0A87B007C0D41 /* main.m */; };
 		63ACEF861EC0A87B007C0D41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEF851EC0A87B007C0D41 /* AppDelegate.m */; };
 		63ACEF8E1EC0A87B007C0D41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63ACEF8D1EC0A87B007C0D41 /* Assets.xcassets */; };
@@ -41,6 +42,8 @@
 		63112E021EC0C37F00920A75 /* SLVNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVNetworkService.h; path = Services/SLVNetworkService.h; sourceTree = "<group>"; };
 		63112E031EC0C37F00920A75 /* SLVNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVNetworkService.m; path = Services/SLVNetworkService.m; sourceTree = "<group>"; };
 		636E55BB1EC37A0E005D0219 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		636E55BD1EC46996005D0219 /* SLVLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVLocationService.h; path = Services/SLVLocationService.h; sourceTree = "<group>"; };
+		636E55BE1EC46996005D0219 /* SLVLocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVLocationService.m; path = Services/SLVLocationService.m; sourceTree = "<group>"; };
 		63ACEF7E1EC0A87B007C0D41 /* SLVATM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLVATM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63ACEF821EC0A87B007C0D41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		63ACEF841EC0A87B007C0D41 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 			children = (
 				63112E021EC0C37F00920A75 /* SLVNetworkService.h */,
 				63112E031EC0C37F00920A75 /* SLVNetworkService.m */,
+				636E55BD1EC46996005D0219 /* SLVLocationService.h */,
+				636E55BE1EC46996005D0219 /* SLVLocationService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				63112E041EC0C37F00920A75 /* SLVNetworkService.m in Sources */,
 				63112E011EC0C10A00920A75 /* SLVTableModel.m in Sources */,
 				63ACEF861EC0A87B007C0D41 /* AppDelegate.m in Sources */,
+				636E55BF1EC46996005D0219 /* SLVLocationService.m in Sources */,
 				63ACEF831EC0A87B007C0D41 /* main.m in Sources */,
 				63ACEFB01EC0A954007C0D41 /* SVLTableViewController.m in Sources */,
 				63112DFD1EC0C0C100920A75 /* SLVTableViewCell.m in Sources */,
