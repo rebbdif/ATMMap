@@ -91,7 +91,7 @@ static NSString * const reuseID = @"atmCell";
 
 - (void)newAtmsWithParameters:(NSDictionary *)parameters{
     __weak typeof(self) weakself = self;
-    [self.model downloadAtmArrayWithParameters:parameters withCompletionHandler:^(NSArray *results){
+    [self.model downloadAtmArrayWithParameters:parameters withCompletionHandler:^(NSArray *items){
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakself.tableView reloadData];
         });
