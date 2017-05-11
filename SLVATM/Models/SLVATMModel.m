@@ -17,10 +17,10 @@
     [dictionary[@"opening_hours"][@"open_now"] boolValue]?(atm.openNow=@"open"):(atm.openNow=@"closed");
     
     NSSet *types=[NSSet setWithArray:dictionary[@"types"]];
-    if ([types containsObject:@"bank"]){
-        atm.type=@"bank";
-    }else if([types containsObject:@"atm"]){
+    if ([types containsObject:@"atm"]){
         atm.type=@"atm";
+    }else if([types containsObject:@"bank"]){
+        atm.type=@"bank";
     }else{
         atm.type=@"?";
     }

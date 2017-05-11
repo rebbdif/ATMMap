@@ -40,6 +40,9 @@
                     GMSMarker *marker = [GMSMarker markerWithPosition:markerPosition];
                     marker.title = atm.name;
                     marker.map = ((GMSMapView *)weakself.view);
+                    if ([atm.openNow isEqualToString:@"closed"]){
+                        marker.icon = [GMSMarker markerImageWithColor:[UIColor lightGrayColor]];
+                    }
                 });
             }
         }];
