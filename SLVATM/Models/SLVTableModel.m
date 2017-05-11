@@ -34,7 +34,7 @@
     NSString *pagetoken = parameters[@"pagetoken"];
     NSString *token = @"AIzaSyC593iluNjtK6A-NYWtD6f9sl10c8I8JQU";
     token = @"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0";
-    NSString* url= [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&keyword=atm&rankby=distance&language=RU&%@%@&key=%@",location.coordinate.latitude,location.coordinate.longitude,openNow,pagetoken,token];
+    NSString* url= [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&type=bank&rankby=distance&language=RU&%@%@&key=%@",location.coordinate.latitude,location.coordinate.longitude,openNow,pagetoken,token];
     [self.networkService downloadDataFromUrl:[NSURL URLWithString:url] withCompletionHandler:^(NSData *data) {
         NSError *error = nil;
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
@@ -55,6 +55,8 @@
         }
     }];
 }
+
+
 
 
 @end
