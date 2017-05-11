@@ -11,7 +11,24 @@
 @implementation SLVATMModel
 
 + (SLVATMModel *)atmWithDictionary: (NSDictionary *)dictionary{
-    SLVATMModel *atm = nil;
+    SLVATMModel *atm = [SLVATMModel new];
+    atm.name = dictionary[@"name"];
+    atm.adress = dictionary[@"vicinity"];
+    [dictionary[@"open_now"] boolValue]?(atm.openNow=@"open"):(atm.openNow=@"closed");
+    
+    NSSet *types=[NSSet setWithArray:dictionary[@"types"]];
+    if ([types containsObject:@"bank"]){
+        atm.type=@"bank";
+    }else if([types containsObject:@"atm"]){
+        atm.type=@"atm";
+    }else{
+        atm.type=@"?";
+    }
+    atm.weekDays=dictionary[@"weekday_text"];
+    
+    NSDictionary *coordinate = dictionary[@"geometry"][@"location"];
+    atm.latitude=coordinate[@"lat"];
+    atm.longitude=coordinate[@"lng"];
     
     return atm;
 }

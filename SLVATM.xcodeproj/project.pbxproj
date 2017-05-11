@@ -10,15 +10,15 @@
 		63112DFD1EC0C0C100920A75 /* SLVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63112DFC1EC0C0C100920A75 /* SLVTableViewCell.m */; };
 		63112E011EC0C10A00920A75 /* SLVTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63112E001EC0C10A00920A75 /* SLVTableModel.m */; };
 		63112E041EC0C37F00920A75 /* SLVNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 63112E031EC0C37F00920A75 /* SLVNetworkService.m */; };
+		636E55BC1EC37A0E005D0219 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636E55BB1EC37A0E005D0219 /* Launch Screen.storyboard */; };
 		63ACEF831EC0A87B007C0D41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEF821EC0A87B007C0D41 /* main.m */; };
 		63ACEF861EC0A87B007C0D41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEF851EC0A87B007C0D41 /* AppDelegate.m */; };
 		63ACEF8E1EC0A87B007C0D41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63ACEF8D1EC0A87B007C0D41 /* Assets.xcassets */; };
-		63ACEF911EC0A87B007C0D41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63ACEF8F1EC0A87B007C0D41 /* LaunchScreen.storyboard */; };
 		63ACEF9C1EC0A87B007C0D41 /* SLVATMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEF9B1EC0A87B007C0D41 /* SLVATMTests.m */; };
-		63ACEFA91EC0A8FF007C0D41 /* SLVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEFA81EC0A8FF007C0D41 /* SLVTabBarController.m */; };
 		63ACEFAD1EC0A931007C0D41 /* SLVMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEFAC1EC0A931007C0D41 /* SLVMapViewController.m */; };
 		63ACEFB01EC0A954007C0D41 /* SVLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEFAF1EC0A954007C0D41 /* SVLTableViewController.m */; };
 		63ACEFB31EC0AB43007C0D41 /* SLVATMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEFB21EC0AB43007C0D41 /* SLVATMModel.m */; };
+		F6E0CEA85EAA82D658BEB4C9 /* Pods_SLVATM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FB6590912A4D7290A281E7 /* Pods_SLVATM.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,30 +32,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46FB6590912A4D7290A281E7 /* Pods_SLVATM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SLVATM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E983B4B4267A0C891281B57 /* Pods-SLVATM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLVATM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SLVATM/Pods-SLVATM.debug.xcconfig"; sourceTree = "<group>"; };
 		63112DFB1EC0C0C100920A75 /* SLVTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVTableViewCell.h; path = Views/SLVTableViewCell.h; sourceTree = "<group>"; };
 		63112DFC1EC0C0C100920A75 /* SLVTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVTableViewCell.m; path = Views/SLVTableViewCell.m; sourceTree = "<group>"; };
 		63112DFF1EC0C10A00920A75 /* SLVTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVTableModel.h; path = Models/SLVTableModel.h; sourceTree = "<group>"; };
 		63112E001EC0C10A00920A75 /* SLVTableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVTableModel.m; path = Models/SLVTableModel.m; sourceTree = "<group>"; };
 		63112E021EC0C37F00920A75 /* SLVNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVNetworkService.h; path = Services/SLVNetworkService.h; sourceTree = "<group>"; };
 		63112E031EC0C37F00920A75 /* SLVNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVNetworkService.m; path = Services/SLVNetworkService.m; sourceTree = "<group>"; };
+		636E55BB1EC37A0E005D0219 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		63ACEF7E1EC0A87B007C0D41 /* SLVATM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLVATM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63ACEF821EC0A87B007C0D41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		63ACEF841EC0A87B007C0D41 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		63ACEF851EC0A87B007C0D41 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		63ACEF8D1EC0A87B007C0D41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		63ACEF901EC0A87B007C0D41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63ACEF921EC0A87B007C0D41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63ACEF971EC0A87B007C0D41 /* SLVATMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLVATMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63ACEF9B1EC0A87B007C0D41 /* SLVATMTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLVATMTests.m; sourceTree = "<group>"; };
 		63ACEF9D1EC0A87B007C0D41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63ACEFA71EC0A8FF007C0D41 /* SLVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVTabBarController.h; path = Controllers/SLVTabBarController.h; sourceTree = "<group>"; };
-		63ACEFA81EC0A8FF007C0D41 /* SLVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVTabBarController.m; path = Controllers/SLVTabBarController.m; sourceTree = "<group>"; };
 		63ACEFAB1EC0A931007C0D41 /* SLVMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVMapViewController.h; path = Controllers/SLVMapViewController.h; sourceTree = "<group>"; };
 		63ACEFAC1EC0A931007C0D41 /* SLVMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVMapViewController.m; path = Controllers/SLVMapViewController.m; sourceTree = "<group>"; };
 		63ACEFAE1EC0A954007C0D41 /* SVLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVLTableViewController.h; path = Controllers/SVLTableViewController.h; sourceTree = "<group>"; };
 		63ACEFAF1EC0A954007C0D41 /* SVLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVLTableViewController.m; path = Controllers/SVLTableViewController.m; sourceTree = "<group>"; };
 		63ACEFB11EC0AB43007C0D41 /* SLVATMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVATMModel.h; path = Models/SLVATMModel.h; sourceTree = "<group>"; };
 		63ACEFB21EC0AB43007C0D41 /* SLVATMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVATMModel.m; path = Models/SLVATMModel.m; sourceTree = "<group>"; };
+		AC8C9A73412CA2A3D7730394 /* Pods-SLVATM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLVATM.release.xcconfig"; path = "Pods/Target Support Files/Pods-SLVATM/Pods-SLVATM.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6E0CEA85EAA82D658BEB4C9 /* Pods_SLVATM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		248F5CA443D5A0531FD9363C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46FB6590912A4D7290A281E7 /* Pods_SLVATM.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		63112DFE1EC0C0CF00920A75 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +110,8 @@
 				63ACEF801EC0A87B007C0D41 /* SLVATM */,
 				63ACEF9A1EC0A87B007C0D41 /* SLVATMTests */,
 				63ACEF7F1EC0A87B007C0D41 /* Products */,
+				A2ECED86E36AEB5717616934 /* Pods */,
+				248F5CA443D5A0531FD9363C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,10 +157,10 @@
 		63ACEFA61EC0A899007C0D41 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				636E55BB1EC37A0E005D0219 /* Launch Screen.storyboard */,
 				63ACEF841EC0A87B007C0D41 /* AppDelegate.h */,
 				63ACEF851EC0A87B007C0D41 /* AppDelegate.m */,
 				63ACEF8D1EC0A87B007C0D41 /* Assets.xcassets */,
-				63ACEF8F1EC0A87B007C0D41 /* LaunchScreen.storyboard */,
 				63ACEF921EC0A87B007C0D41 /* Info.plist */,
 			);
 			name = Application;
@@ -157,12 +169,10 @@
 		63ACEFAA1EC0A905007C0D41 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				63ACEFAB1EC0A931007C0D41 /* SLVMapViewController.h */,
-				63ACEFAC1EC0A931007C0D41 /* SLVMapViewController.m */,
 				63ACEFAE1EC0A954007C0D41 /* SVLTableViewController.h */,
 				63ACEFAF1EC0A954007C0D41 /* SVLTableViewController.m */,
-				63ACEFA71EC0A8FF007C0D41 /* SLVTabBarController.h */,
-				63ACEFA81EC0A8FF007C0D41 /* SLVTabBarController.m */,
+				63ACEFAB1EC0A931007C0D41 /* SLVMapViewController.h */,
+				63ACEFAC1EC0A931007C0D41 /* SLVMapViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -178,6 +188,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		A2ECED86E36AEB5717616934 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4E983B4B4267A0C891281B57 /* Pods-SLVATM.debug.xcconfig */,
+				AC8C9A73412CA2A3D7730394 /* Pods-SLVATM.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -185,9 +204,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63ACEFA01EC0A87B007C0D41 /* Build configuration list for PBXNativeTarget "SLVATM" */;
 			buildPhases = (
+				9D2F1C1431ED2473938CDE61 /* [CP] Check Pods Manifest.lock */,
 				63ACEF7A1EC0A87B007C0D41 /* Sources */,
 				63ACEF7B1EC0A87B007C0D41 /* Frameworks */,
 				63ACEF7C1EC0A87B007C0D41 /* Resources */,
+				5B53072173D3FD38C37F003B /* [CP] Embed Pods Frameworks */,
+				5BB4FFEFF737D8A4AAA651B0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -262,7 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63ACEF911EC0A87B007C0D41 /* LaunchScreen.storyboard in Resources */,
+				636E55BC1EC37A0E005D0219 /* Launch Screen.storyboard in Resources */,
 				63ACEF8E1EC0A87B007C0D41 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +298,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5B53072173D3FD38C37F003B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SLVATM/Pods-SLVATM-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BB4FFEFF737D8A4AAA651B0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SLVATM/Pods-SLVATM-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D2F1C1431ED2473938CDE61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		63ACEF7A1EC0A87B007C0D41 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -285,7 +355,6 @@
 				63112E011EC0C10A00920A75 /* SLVTableModel.m in Sources */,
 				63ACEF861EC0A87B007C0D41 /* AppDelegate.m in Sources */,
 				63ACEF831EC0A87B007C0D41 /* main.m in Sources */,
-				63ACEFA91EC0A8FF007C0D41 /* SLVTabBarController.m in Sources */,
 				63ACEFB01EC0A954007C0D41 /* SVLTableViewController.m in Sources */,
 				63112DFD1EC0C0C100920A75 /* SLVTableViewCell.m in Sources */,
 				63ACEFB31EC0AB43007C0D41 /* SLVATMModel.m in Sources */,
@@ -310,17 +379,6 @@
 			targetProxy = 63ACEF981EC0A87B007C0D41 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		63ACEF8F1EC0A87B007C0D41 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63ACEF901EC0A87B007C0D41 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		63ACEF9E1EC0A87B007C0D41 /* Debug */ = {
@@ -415,10 +473,12 @@
 		};
 		63ACEFA11EC0A87B007C0D41 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E983B4B4267A0C891281B57 /* Pods-SLVATM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4BVAFGEHDW;
 				INFOPLIST_FILE = SLVATM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = serebryanyy.SLVATM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -427,10 +487,12 @@
 		};
 		63ACEFA21EC0A87B007C0D41 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC8C9A73412CA2A3D7730394 /* Pods-SLVATM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4BVAFGEHDW;
 				INFOPLIST_FILE = SLVATM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = serebryanyy.SLVATM;
 				PRODUCT_NAME = "$(TARGET_NAME)";

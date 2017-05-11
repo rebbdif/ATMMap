@@ -12,6 +12,6 @@
 
 @property (copy, nonatomic) NSArray *atmsArray;
 
-- (void) downloadAtmArrayFromUrl: (NSString *)url withCompletionHandler:(void (^)(void))completionHandler;
+- (void) downloadAtmArrayWithParameters: (NSDictionary *)parameters withCompletionHandler:(void (^)(void))completionHandler;
 
 @end

@@ -10,4 +10,12 @@
 
 @interface SLVTableViewCell : UITableViewCell
 
+@property (strong,nonatomic) UILabel *name;
+@property (strong,nonatomic) UILabel *adress;
+@property (strong,nonatomic) UILabel *openNow;
+@property (strong,nonatomic) UILabel *type;
+@property (strong,nonatomic) UILabel *weekDays;
+@property (strong,nonatomic) UIImageView *logo;
+@property (strong,nonatomic) UILabel *distance;
+
 @end

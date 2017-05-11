@@ -9,10 +9,11 @@
 #import "SLVTableModel.h"
 #import "SLVNetworkService.h"
 #import "SLVATMModel.h"
+@import CoreLocation;
 
 @interface SLVTableModel()
 
-@property(strong,nonatomic,readonly) SLVNetworkService *networkService;
+@property (strong,nonatomic,readonly) SLVNetworkService *networkService;
 
 @end
 
@@ -27,18 +28,28 @@
     return self;
 }
 
-- (void) downloadAtmArrayFromUrl: (NSString *)url withCompletionHandler:(void (^)(void))completionHandler{
+- (void) downloadAtmArrayWithParameters: (NSDictionary *)parameters withCompletionHandler:(void (^)(void))completionHandler{
+    CLLocation *location = parameters[@"location"];
+    NSString *openNow = parameters [@"opennow"];
+    NSString *token = @"AIzaSyC593iluNjtK6A-NYWtD6f9sl10c8I8JQU";
+    token = @"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0";
+    NSString* url= [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&keyword=atm&rankby=distance&%@&key=%@",location.coordinate.latitude,location.coordinate.longitude,openNow,token];
     [self.networkService downloadDataFromUrl:[NSURL URLWithString:url] withCompletionHandler:^(NSData *data) {
         NSError *error = nil;
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
         if(!json){
             NSLog(@"NSJSONSerialization error %@",error);
         }else{
-            NSMutableArray *newItems = [NSMutableArray new];
-            for (NSDictionary *dict in json[@"results"]) {
-                [newItems addObject:[SLVATMModel atmWithDictionary:dict]];
+            if (json[@"error_message"]){
+                NSLog(@"error %@",json[@"error_message"]);
+            }else{
+                NSMutableArray *newItems = [NSMutableArray new];
+                for (NSDictionary *dict in json[@"results"]) {
+                    [newItems addObject:[SLVATMModel atmWithDictionary:dict]];
+                }
+                self.atmsArray = newItems;
+                completionHandler();
             }
-            self.atmsArray = newItems;
         }
     }];
 }

@@ -7,10 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "SLVTabBarController.h"
 #import "SLVMapViewController.h"
 #import "SVLTableViewController.h"
 #import "SLVATMModel.h"
+
+@import GooglePlaces;
 
 @interface AppDelegate ()
 
@@ -20,12 +21,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [GMSPlacesClient provideAPIKey:@"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0"];
     self.window= [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     SLVMapViewController *mapViewController =[SLVMapViewController new];
     mapViewController.title=@"map";
     SVLTableViewController *tableViewController = [SVLTableViewController new];
     tableViewController.title=@"table";
-    SLVTabBarController *tabBarController = [SLVTabBarController new];
+    UITabBarController *tabBarController = [UITabBarController new];
     tabBarController.viewControllers=@[tableViewController, mapViewController];
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
