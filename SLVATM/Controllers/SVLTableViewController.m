@@ -99,7 +99,7 @@ static NSString * const reuseID = @"atmCell";
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     CLLocation* location = [locations lastObject];
-    NSDictionary *parameters = @{@"location": location, @"opennow":@"opennow"};
+    NSDictionary *parameters = @{@"location": location, @"opennow":@""};
     __weak typeof(self) weakself = self;
     [self.model downloadAtmArrayWithParameters:parameters withCompletionHandler:^{
         dispatch_async(dispatch_get_main_queue(), ^{

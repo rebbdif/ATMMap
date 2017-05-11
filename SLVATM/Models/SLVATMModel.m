@@ -14,7 +14,8 @@
     SLVATMModel *atm = [SLVATMModel new];
     atm.name = dictionary[@"name"];
     atm.adress = dictionary[@"vicinity"];
-    [dictionary[@"open_now"] boolValue]?(atm.openNow=@"open"):(atm.openNow=@"closed");
+    NSLog(@"opennow %@",dictionary[@"opening_hours"][@"open_now"]);
+    [dictionary[@"opening_hours"][@"open_now"] boolValue]?(atm.openNow=@"open"):(atm.openNow=@"closed");
     
     NSSet *types=[NSSet setWithArray:dictionary[@"types"]];
     if ([types containsObject:@"bank"]){
