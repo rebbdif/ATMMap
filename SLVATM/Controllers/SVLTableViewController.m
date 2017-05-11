@@ -10,13 +10,14 @@
 #import "SLVATMModel.h"
 #import "SLVTableModel.h"
 #import "SLVTableViewCell.h"
+#import "SLVLocationService.h"
 @import CoreLocation;
 
-@interface SVLTableViewController () <UITableViewDelegate,UITableViewDataSource, CLLocationManagerDelegate>
+@interface SVLTableViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property(strong,nonatomic) UITableView *tableView;
 @property(strong,nonatomic) SLVTableModel *model;
-@property(strong,nonatomic) CLLocationManager *locationManager;
+@property(strong,nonatomic) SLVLocationService *slvLocationService;
 
 @end
 
@@ -36,12 +37,14 @@ static NSString * const reuseID = @"atmCell";
     [self.tableView registerClass:[SLVTableViewCell class] forCellReuseIdentifier:reuseID];
     self.tableView.rowHeight = 64;
     [self.view addSubview:self.tableView];
+    
+    self.slvLocationService = [SLVLocationService new];
+    __weak typeof(self) weakself=self;
+    [self.slvLocationService getLocationWithCompletionHandler:^(NSDictionary *parameters) {
+        [weakself newAtmsWithParameters:parameters];
+    }];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self getLocation];
-}
 
 #pragma Table view data source
 
@@ -58,6 +61,11 @@ static NSString * const reuseID = @"atmCell";
         cell.adress.numberOfLines=1;
     }
     cell.openNow.text=currentAtm.openNow;
+    if([cell.openNow.text isEqualToString:@"closed"]){
+       cell.openNow.textColor=[UIColor lightGrayColor];
+    }else{
+        cell.openNow.textColor=[UIColor blackColor];
+    }
     cell.distance.text=[NSString stringWithFormat:@"%@", (currentAtm.distance)?(currentAtm.distance):@" "];
     if (!currentAtm.logo){
         if ([currentAtm.type isEqual:@"atm"]){
@@ -65,6 +73,10 @@ static NSString * const reuseID = @"atmCell";
         }else if ([currentAtm.type isEqual:@"bank"]){
             cell.logo.image = [UIImage imageNamed:@"bank"];
         }
+    }
+    if (indexPath.row==self.model.atmsArray.count-1 && indexPath.row>15){
+        NSDictionary *parameters = @{@"location": self.slvLocationService.location, @"opennow":@"", @"pagetoken":@"pagetoken"};
+        [self newAtmsWithParameters:parameters];
     }
     return cell;
 }
@@ -77,66 +89,14 @@ static NSString * const reuseID = @"atmCell";
     return 1;
 }
 
-#pragma Location
-
-- (void)getLocation{
-    if(!self.locationManager){
-        self.locationManager = [CLLocationManager new];
-        self.locationManager.delegate=self;
-        self.locationManager.desiredAccuracy= kCLLocationAccuracyHundredMeters;
-        self.locationManager.distanceFilter = 100;
-    }
-    if (CLLocationManager.authorizationStatus != kCLAuthorizationStatusAuthorizedWhenInUse) {
-        [self.locationManager requestWhenInUseAuthorization];
-    }else{
-        [self.locationManager startUpdatingLocation];
-    }
-}
-
--(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
-    [self.locationManager startUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
-    CLLocation* location = [locations lastObject];
-    NSDictionary *parameters = @{@"location": location, @"opennow":@"opennow"};
+- (void)newAtmsWithParameters:(NSDictionary *)parameters{
     __weak typeof(self) weakself = self;
-    [self.model downloadAtmArrayWithParameters:parameters withCompletionHandler:^{
+    [self.model downloadAtmArrayWithParameters:parameters withCompletionHandler:^(NSArray *results){
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakself.tableView reloadData];
         });
     }];
-    [self.locationManager stopUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    [manager stopUpdatingLocation];
-    NSLog(@"error%@",error);
-    NSString *errorMessage;
-    switch([error code])
-    {
-        case kCLErrorNetwork:
-        {
-            errorMessage = @"please check your network connection or that you are not in airplane mode";
-        }
-            break;
-        case kCLErrorDenied:{
-            errorMessage = @"user has denied to use current Location";
-        }
-            break;
-        default:
-        {
-            errorMessage = @"something went wrong. restart the app";
-        }
-    }
-    UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"location error" message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
-    [alert addAction:okAction];
-    [self presentViewController:alert animated:YES completion:^{
-        NSLog(@"FAKING LOCATION BECAUSE OF ERROR");
-        CLLocation *fakeLocation = [[CLLocation alloc]initWithLatitude:55.632907 longitude:37.53569];
-        [self locationManager:self.locationManager didUpdateLocations:@[fakeLocation]];
-    }];
+    
 }
 
 

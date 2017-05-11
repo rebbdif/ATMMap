@@ -28,12 +28,13 @@
     return self;
 }
 
-- (void) downloadAtmArrayWithParameters: (NSDictionary *)parameters withCompletionHandler:(void (^)(void))completionHandler{
+- (void) downloadAtmArrayWithParameters: (NSDictionary *)parameters withCompletionHandler:(void (^)(NSArray *results))completionHandler{
     CLLocation *location = parameters[@"location"];
     NSString *openNow = parameters [@"opennow"];
+    NSString *pagetoken = parameters[@"pagetoken"];
     NSString *token = @"AIzaSyC593iluNjtK6A-NYWtD6f9sl10c8I8JQU";
     token = @"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0";
-    NSString* url= [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&keyword=atm&rankby=distance&%@&key=%@",location.coordinate.latitude,location.coordinate.longitude,openNow,token];
+    NSString* url= [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&keyword=atm&rankby=distance&language=RU&%@%@&key=%@",location.coordinate.latitude,location.coordinate.longitude,openNow,pagetoken,token];
     [self.networkService downloadDataFromUrl:[NSURL URLWithString:url] withCompletionHandler:^(NSData *data) {
         NSError *error = nil;
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
@@ -47,8 +48,9 @@
                 for (NSDictionary *dict in json[@"results"]) {
                     [newItems addObject:[SLVATMModel atmWithDictionary:dict]];
                 }
-                self.atmsArray = newItems;
-                completionHandler();
+                self.atmsArray = [self.atmsArray arrayByAddingObjectsFromArray:newItems];
+                NSLog(@"sel.atmsarray.count%lu",(unsigned long)self.atmsArray.count);
+                completionHandler(self.atmsArray);
             }
         }
     }];
