@@ -9,14 +9,12 @@
 #import <Foundation/Foundation.h>
 @import CoreLocation;
 
-
-
-
 @interface SLVLocationService : NSObject
 
 @property(strong,nonatomic) CLLocation *location;
 @property(strong,nonatomic) CLLocationManager *locationManager;
 
-- (void)getLocationWithCompletionHandler:(void (^)(NSDictionary *parameters))completionHandler;
+- (void) getLocationWithCompletionHandler:(void (^_Nullable)(NSDictionary * _Nullable parameters, NSError *_Nullable error))completionHandler;
+
 
 @end

@@ -10,12 +10,12 @@
 #import "UIKit/UIKit.h"
 
 @interface SLVLocationService()<CLLocationManagerDelegate>
-@property (nonatomic, copy, nullable) void (^completionHandler)(NSDictionary *);
+@property (nonatomic, copy, nullable) void (^completionHandler)(NSDictionary *, NSError *);
 @end
 
 @implementation SLVLocationService
 
-- (void)getLocationWithCompletionHandler:(void (^)(NSDictionary *parameters))completionHandler{
+- (void) getLocationWithCompletionHandler:(void (^_Nullable)(NSDictionary * _Nullable parameters, NSError *_Nullable error))completionHandler{
     if(!self.locationManager){
         self.locationManager = [CLLocationManager new];
         self.locationManager.delegate=self;
@@ -39,7 +39,7 @@
     self.locationManager=nil;
     self.location = [locations lastObject];
     NSDictionary *parameters = @{@"location": self.location, @"opennow":@"", @"pagetoken":@"pagetoken"};
-    self.completionHandler(parameters);
+    self.completionHandler(parameters,nil);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -62,16 +62,11 @@
             errorMessage = @"something went wrong. restart the app";
         }
     }
-    UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"location error" message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
-    [alert addAction:okAction];
-    /*
-    [self presentViewController:alert animated:YES completion:^{
-        NSLog(@"FAKING LOCATION BECAUSE OF ERROR");
+    NSError *humanUnderstandableError = [NSError errorWithDomain:error.domain code:error.code userInfo:@{@"info":errorMessage}];
+    self.completionHandler(nil,humanUnderstandableError);
+           NSLog(@"FAKING LOCATION BECAUSE OF ERROR");
         CLLocation *fakeLocation = [[CLLocation alloc]initWithLatitude:55.632907 longitude:37.53569];
         [self locationManager:self.locationManager didUpdateLocations:@[fakeLocation]];
-    }];
-     */
 }
 
 

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class SLVTableModel;
+
 @interface SLVMapViewController : UIViewController
+
+@property (strong,nonatomic) SLVTableModel *model;
 
 @end

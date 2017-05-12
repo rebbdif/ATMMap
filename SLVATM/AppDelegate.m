@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "SLVMapViewController.h"
 #import "SVLTableViewController.h"
-#import "SLVATMModel.h"
+#import "SLVTableModel.h"
 
 @import GoogleMaps;
 
@@ -19,16 +19,18 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [GMSServices provideAPIKey:@"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0"];
-    self.window= [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
-    SLVMapViewController *mapViewController =[SLVMapViewController new];
-    mapViewController.title=@"map";
+    SLVTableModel *model = [SLVTableModel new];
+    SLVMapViewController *mapViewController = [SLVMapViewController new];
+    mapViewController.model = model;
+    mapViewController.title = @"map";
     SVLTableViewController *tableViewController = [SVLTableViewController new];
-    tableViewController.title=@"table";
+    tableViewController.model = model;
+    tableViewController.title = @"table";
     UITabBarController *tabBarController = [UITabBarController new];
     tabBarController.viewControllers=@[tableViewController, mapViewController];
+    self.window= [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

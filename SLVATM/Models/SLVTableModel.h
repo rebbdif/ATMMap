@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class SLVLocationService;
+
 @interface SLVTableModel : NSObject
 
 @property (copy, nonatomic) NSArray *atmsArray;
+@property (strong,nonatomic) SLVLocationService *slvLocationService;
 
 - (void) downloadAtmArrayWithParameters: (NSDictionary *)parameters withCompletionHandler:(void (^)(NSArray *results))completionHandler;
+- (void)runWithCompletionHandler:(void(^)(NSArray *results, NSError *_Nullable error))presentingCompletionHandler;
 
 @end

@@ -10,14 +10,9 @@
 #import "SLVLocationService.h"
 #import "SLVTableModel.h"
 #import "SLVATMModel.h"
-@import GooglePlaces;
-@import CoreLocation;
 @import GoogleMaps;
 
 @interface SLVMapViewController () <GMSMapViewDelegate>
-
-@property (strong,nonatomic) SLVLocationService *slvLocationService;
-@property (strong,nonatomic) SLVTableModel *model;
 
 @end
 
@@ -25,50 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor lightGrayColor];
-    self.slvLocationService = [SLVLocationService new];
-    self.model = [SLVTableModel new];
-    __weak typeof(self) weakself=self;
-    [self.slvLocationService getLocationWithCompletionHandler:^(NSDictionary *parameters) {
-        CLLocation *currentLocation = parameters[@"location"];
-        GMSCameraPosition *currentLocationCameraPosition = [GMSCameraPosition cameraWithLatitude:currentLocation.coordinate.latitude longitude:currentLocation.coordinate.longitude zoom:14];
-        [((GMSMapView *)weakself.view) setCamera:currentLocationCameraPosition];
-        [weakself.model downloadAtmArrayWithParameters:parameters withCompletionHandler:^(NSArray *results){
-            for (SLVATMModel *atm in results) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    CLLocationCoordinate2D markerPosition = CLLocationCoordinate2DMake([atm.latitude doubleValue], [atm.longitude doubleValue]);
-                    GMSMarker *marker = [GMSMarker markerWithPosition:markerPosition];
-                    marker.title = atm.name;
-                    marker.snippet = [NSString stringWithFormat:@"%@ | %@",atm.openNow, atm.adress];
-                    marker.map = ((GMSMapView *)weakself.view);
-                    if ([atm.openNow isEqualToString:@"closed"]){
-                        marker.icon = [GMSMarker markerImageWithColor:[UIColor lightGrayColor]];
-                    }
-                });
-            }
-        }];
-    }];
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    UILabel *hintView = [UILabel new];
-    hintView.backgroundColor = [UIColor colorWithRed:0 green:0.5 blue:0.5 alpha:0.2];
-    CGRect frame = self.view.frame;
-    hintView.frame=CGRectMake(8, 25, CGRectGetWidth(frame)-16, 20);
-    hintView.text = @"Чтобы построить маршрут нажмите на описание банкомата";
-    hintView.font = [UIFont systemFontOfSize:10];
-    hintView.numberOfLines = 2;
-    [hintView adjustsFontSizeToFitWidth];
-    [self.view addSubview:hintView];
-    [UIView animateWithDuration:1 delay:10 options:UIViewAnimationOptionTransitionNone animations:^{
-        hintView.layer.opacity = 0.5;
-    } completion:^(BOOL finished) {
-        hintView.hidden=YES;
-    }];
-}
-
-- (void)loadView{
+- (void)loadView {
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:55.741 longitude:37.621 zoom:12];
     GMSMapView *mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView.settings.compassButton = YES;
@@ -79,7 +33,60 @@
     self.view = mapView;
 }
 
-- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(nonnull GMSMarker *)marker{
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    __weak typeof(self) weakself=self;
+    [self.model runWithCompletionHandler:^(NSArray *results, NSError *error) {
+        if (error){
+            UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"location error" message:error.userInfo[@"info"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        if (results){
+            CLLocation *currentLocation = self.model.slvLocationService.location;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                GMSCameraPosition *currentLocationCameraPosition = [GMSCameraPosition cameraWithLatitude:currentLocation.coordinate.latitude longitude:currentLocation.coordinate.longitude zoom:14];
+                [((GMSMapView *)weakself.view) setCamera:currentLocationCameraPosition];
+                for (SLVATMModel *atm in results) {
+                    CLLocationCoordinate2D markerPosition = CLLocationCoordinate2DMake([atm.latitude doubleValue], [atm.longitude doubleValue]);
+                    GMSMarker *marker = [GMSMarker markerWithPosition:markerPosition];
+                    marker.title = atm.name;
+                    marker.snippet = [NSString stringWithFormat:@"%@ | %@",atm.openNow, atm.adress];
+                    marker.map = ((GMSMapView *)weakself.view);
+                    if ([atm.openNow isEqualToString:@"closed"]){
+                        marker.icon = [GMSMarker markerImageWithColor:[UIColor lightGrayColor]];
+                    }
+                }
+            });
+        }
+    }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    UILabel *hintView = [UILabel new];
+    hintView.backgroundColor = [UIColor colorWithRed:0 green:0.5 blue:0.5 alpha:0.2];
+    CGRect frame = self.view.frame;
+    hintView.frame=CGRectMake(8, 25, CGRectGetWidth(frame)-16, 20);
+    hintView.text = @"Чтобы построить маршрут нажмите на описание банкомата";
+    hintView.font = [UIFont systemFontOfSize:10];
+    hintView.numberOfLines = 2;
+    [hintView adjustsFontSizeToFitWidth];
+    [self.view addSubview:hintView];
+    [UIView animateWithDuration:2 delay:5 options:UIViewAnimationOptionTransitionNone animations:^{
+        hintView.layer.opacity = 0;
+    } completion:^(BOOL finished) {
+        hintView.hidden=YES;
+    }];
+}
+
+- (void)addMarkersForController: (UIViewController *) weakself {
+    
+    
+}
+
+- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(nonnull GMSMarker *)marker {
     CLLocation *myLocation = ((GMSMapView*)(self.view)).myLocation;
     NSString *origin=[NSString stringWithFormat:@"origin=%f,%f",myLocation.coordinate.latitude,myLocation.coordinate.longitude];
     NSString *destination=[NSString stringWithFormat:@"destination=%f,%f",marker.position.latitude,marker.position.longitude];;
