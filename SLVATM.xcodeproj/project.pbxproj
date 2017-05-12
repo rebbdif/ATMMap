@@ -132,12 +132,12 @@
 		63ACEF801EC0A87B007C0D41 /* SLVATM */ = {
 			isa = PBXGroup;
 			children = (
+				63112E051EC0C38A00920A75 /* Services */,
 				63ACEFB41EC0AB47007C0D41 /* Models */,
 				63112DFE1EC0C0CF00920A75 /* VIews */,
 				63ACEFAA1EC0A905007C0D41 /* Controllers */,
 				63ACEFA61EC0A899007C0D41 /* Application */,
 				63ACEF811EC0A87B007C0D41 /* Supporting Files */,
-				63112E051EC0C38A00920A75 /* Services */,
 			);
 			path = SLVATM;
 			sourceTree = "<group>";
