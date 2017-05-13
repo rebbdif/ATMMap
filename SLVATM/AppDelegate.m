@@ -30,6 +30,8 @@
     tableViewController.title = @"table";
     UITabBarController *tabBarController = [UITabBarController new];
     tabBarController.viewControllers=@[tableViewController, mapViewController];
+    [tabBarController.tabBar.items[0] setImage:[[UIImage imageNamed:@"tableTabbarImage"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [tabBarController.tabBar.items[1] setImage:[[UIImage imageNamed:@"mapTabbarImage"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     tabBarController.selectedIndex = 0;
     self.window= [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = tabBarController;

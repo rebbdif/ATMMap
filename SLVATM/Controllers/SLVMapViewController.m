@@ -10,9 +10,12 @@
 #import "SLVLocationService.h"
 #import "SLVTableModel.h"
 #import "SLVATMModel.h"
+#import "Decorator.h"
 @import GoogleMaps;
 
 @interface SLVMapViewController () <GMSMapViewDelegate>
+
+@property (assign,nonatomic) float currentZoom;
 
 @end
 
@@ -61,10 +64,20 @@
             });
         }
     }];
+    
+    CGRect bounds=self.view.bounds;
+    CGFloat w=bounds.size.width - 45;
+    UIButton *zoomInButton= [Decorator roundButtonWithlabel:@"+" image:nil frame:CGRectMake(w, bounds.size.height/2-80 , 35, 35)];
+    [zoomInButton addTarget:self action:@selector(zoomIn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:zoomInButton];
+    UIButton *zoomOutButton= [Decorator roundButtonWithlabel:@"-" image:nil frame:CGRectMake(w, bounds.size.height/2 - 40, 34, 34)];
+    [zoomOutButton addTarget:self action:@selector(zoomOut:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:zoomOutButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    self.currentZoom = 12;
     [self addAnimatedHint];
     if (self.model.selectedAtm){
         SLVATMModel *selectedAtm = self.model.selectedAtm;
@@ -125,6 +138,16 @@
         polyline.strokeWidth =2.0;
         polyline.map=((GMSMapView *) view);
     });
+}
+
+-(IBAction)zoomIn:(id)sender{
+    self.currentZoom++;
+    [((GMSMapView*)self.view)animateToZoom:self.currentZoom];
+}
+
+-(IBAction)zoomOut:(id)sender{
+    self.currentZoom--;
+    [((GMSMapView*)self.view)animateToZoom:self.currentZoom];
 }
 
 @end
