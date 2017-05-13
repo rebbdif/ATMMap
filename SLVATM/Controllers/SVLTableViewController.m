@@ -13,7 +13,7 @@
 #import "SLVLocationService.h"
 @import CoreLocation;
 
-@interface SVLTableViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface SVLTableViewController () <UITableViewDelegate,UITableViewDataSource, UITabBarControllerDelegate>
 
 @property (strong,nonatomic) UITableView *tableView;
 @property (strong,nonatomic) SLVLocationService *slvLocationService;
@@ -88,11 +88,14 @@ static NSString * const reuseID = @"atmCell";
     return self.model.atmsArray.count;
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.model.selectedAtm = self.model.atmsArray[indexPath.row];
+    self.tabBarController.selectedIndex = 1;
+    }
 
 
 @end

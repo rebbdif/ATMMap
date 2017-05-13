@@ -12,7 +12,6 @@
 #import "SLVLocationService.h"
 #import "SLVMapViewController.h"
 #import "SVLTableViewController.h"
-@import CoreLocation;
 
 @interface SLVTableModel()
 
@@ -41,11 +40,11 @@ static NSString *const apiKey = @"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0";
         __weak typeof(self) weakself=self;
         [self.slvLocationService getLocationWithCompletionHandler:^(NSDictionary *parameters, NSError *error) {
             if (parameters) {
-            [weakself downloadAtmArrayWithParameters:parameters withCompletionHandler:^(NSArray *results) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    presentingCompletionHandler(results,nil);
-                });
-            }];
+                [weakself downloadAtmArrayWithParameters:parameters withCompletionHandler:^(NSArray *results) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        presentingCompletionHandler(results,nil);
+                    });
+                }];
             } else {
                 presentingCompletionHandler(nil, error);
             }
@@ -94,6 +93,33 @@ static NSString *const apiKey = @"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0";
     }];
 }
 
+- (void)downloadRouteFromLocation:(CLLocationCoordinate2D) start toLocation:(CLLocationCoordinate2D) finish withPresentingCompletionHandler: (void (^)(NSDictionary* json)) presentinCompletionHandler  {
+    NSString *origin=[NSString stringWithFormat:@"origin=%f,%f",start.latitude,start.longitude];
+    NSString *destination=[NSString stringWithFormat:@"destination=%f,%f",finish.latitude, finish.longitude];;
+    NSString *mode =@"mode=walking";
+    NSString *key=@"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0";
+    
+    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/directions/json?%@&%@&%@&key=&%@",origin,destination,mode,key];
+    
+    __weak typeof(self) weakself=self;
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSessionDataTask *task = [session dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error){
+            NSLog(@"network error when getting route %@",error.userInfo);
+        }else{
+            NSError *jsonError=nil;
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            if (!json) {
+                NSLog(@"serialization Error");
+            }else{
+                if (json[@"routes"]) {
+                    presentinCompletionHandler(json);
+                }
+            }
+        }
+    }];
+    [task resume];
+}
 
 
 

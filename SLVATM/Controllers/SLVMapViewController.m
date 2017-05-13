@@ -65,6 +65,25 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self addAnimatedHint];
+    if (self.model.selectedAtm){
+        SLVATMModel *selectedAtm = self.model.selectedAtm;
+        CLLocationCoordinate2D currentLocation = self.model.slvLocationService.location.coordinate;
+        CLLocationCoordinate2D desiredLocation = CLLocationCoordinate2DMake([selectedAtm.latitude doubleValue], [selectedAtm.longitude doubleValue]);
+        __weak typeof(self) weakself = self;
+        [self.model downloadRouteFromLocation:currentLocation toLocation:desiredLocation withPresentingCompletionHandler:^(NSDictionary *json) {
+            [self buildRoute:json forView:weakself.view];
+        }];
+        self.model.selectedAtm=nil;
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [((GMSMapView*)(self.view)) clear];
+}
+
+- (void)addAnimatedHint {
     UILabel *hintView = [UILabel new];
     hintView.backgroundColor = [UIColor colorWithRed:0 green:0.5 blue:0.5 alpha:0.2];
     CGRect frame = self.view.frame;
@@ -81,52 +100,31 @@
     }];
 }
 
-- (void)addMarkersForController: (UIViewController *) weakself {
-    
-    
+- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(nonnull GMSMarker *)marker {
+    CLLocationCoordinate2D myLocation = ((GMSMapView*)(self.view)).myLocation.coordinate;
+    CLLocationCoordinate2D finishLocation = marker.position;
+    __weak typeof(self) weakself = self;
+    [self.model downloadRouteFromLocation:myLocation toLocation:finishLocation withPresentingCompletionHandler:^(NSDictionary *json) {
+        [self buildRoute:json forView:weakself.view];
+    }];
 }
 
-- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(nonnull GMSMarker *)marker {
-    CLLocation *myLocation = ((GMSMapView*)(self.view)).myLocation;
-    NSString *origin=[NSString stringWithFormat:@"origin=%f,%f",myLocation.coordinate.latitude,myLocation.coordinate.longitude];
-    NSString *destination=[NSString stringWithFormat:@"destination=%f,%f",marker.position.latitude,marker.position.longitude];;
-    NSString *mode =@"mode=walking";
-    NSString *key=@"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0";
-    
-    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/directions/json?%@&%@&%@&key=&%@",origin,destination,mode,key];
-    
-    __weak typeof(self) weakself=self;
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    NSURLSessionDataTask *task = [session dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (error){
-            NSLog(@"network error when getting route %@",error.userInfo);
-        }else{
-            NSError *jsonError=nil;
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-            if (!json) {
-                NSLog(@"serialization Error");
-            }else{
-                if (json[@"routes"]) {
-                    GMSMutablePath *path = [GMSMutablePath path];
-                    NSDictionary *route = json[@"routes"][0];
-                    NSDictionary *legs = route[@"legs"][0];
-                    NSArray *steps = legs[@"steps"];
-                    for (NSDictionary * step in steps) {
-                        NSDictionary *startLocation = step[@"start_location"];
-                        NSDictionary *endLocation = step[@"end_location"];
-                        [path addLatitude:[startLocation[@"lat"]doubleValue] longitude:[startLocation[@"lng"]doubleValue]];
-                        [path addLatitude:[endLocation[@"lat"]doubleValue] longitude:[endLocation[@"lng"]doubleValue]];
-                    }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
-                        polyline.strokeWidth =2.0;
-                        polyline.map=((GMSMapView *)weakself.view);
-                    });
-                }
-            }
-        }
-    }];
-    [task resume];
+- (void)buildRoute:(NSDictionary *)json forView:(UIView *)view {
+    GMSMutablePath *path = [GMSMutablePath path];
+    NSDictionary *route = json[@"routes"][0];
+    NSDictionary *legs = route[@"legs"][0];
+    NSArray *steps = legs[@"steps"];
+    for (NSDictionary * step in steps) {
+        NSDictionary *startLocation = step[@"start_location"];
+        NSDictionary *endLocation = step[@"end_location"];
+        [path addLatitude:[startLocation[@"lat"]doubleValue] longitude:[startLocation[@"lng"]doubleValue]];
+        [path addLatitude:[endLocation[@"lat"]doubleValue] longitude:[endLocation[@"lng"]doubleValue]];
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
+        polyline.strokeWidth =2.0;
+        polyline.map=((GMSMapView *) view);
+    });
 }
 
 @end

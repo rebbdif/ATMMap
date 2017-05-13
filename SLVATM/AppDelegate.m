@@ -30,6 +30,7 @@
     tableViewController.title = @"table";
     UITabBarController *tabBarController = [UITabBarController new];
     tabBarController.viewControllers=@[tableViewController, mapViewController];
+    tabBarController.selectedIndex = 0;
     self.window= [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
