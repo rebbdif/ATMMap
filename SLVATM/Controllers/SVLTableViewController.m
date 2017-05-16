@@ -40,7 +40,14 @@ static NSString * const reuseID = @"atmCell";
     [super viewDidAppear:animated];
     __weak typeof(self) weakself = self;
     [self.model runWithCompletionHandler:^(NSArray *results, NSError *error) {
-        [weakself.tableView reloadData];
+        if (!results){
+            UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"location error" message:error.userInfo[@"info"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        } else {
+            [weakself.tableView reloadData];
+        }
     }];
 }
 
@@ -95,7 +102,11 @@ static NSString * const reuseID = @"atmCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.model.selectedAtm = self.model.atmsArray[indexPath.row];
     self.tabBarController.selectedIndex = 1;
-    }
+}
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    self.model.atmsArray = nil;
+}
 
 @end

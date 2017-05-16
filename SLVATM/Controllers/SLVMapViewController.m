@@ -106,12 +106,14 @@
     hintView.numberOfLines = 2;
     [hintView adjustsFontSizeToFitWidth];
     [self.view addSubview:hintView];
-    [UIView animateWithDuration:2 delay:5 options:UIViewAnimationOptionTransitionNone animations:^{
+    [UIView animateWithDuration:2 delay:4 options:UIViewAnimationOptionTransitionNone animations:^{
         hintView.layer.opacity = 0;
     } completion:^(BOOL finished) {
         hintView.hidden=YES;
     }];
 }
+
+#pragma mark GMSMapViewDelegate
 
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(nonnull GMSMarker *)marker {
     CLLocationCoordinate2D myLocation = ((GMSMapView*)(self.view)).myLocation.coordinate;
@@ -119,6 +121,28 @@
     __weak typeof(self) weakself = self;
     [self.model downloadRouteFromLocation:myLocation toLocation:finishLocation withPresentingCompletionHandler:^(NSDictionary *json) {
         [self buildRoute:json forView:weakself.view];
+    }];
+}
+
+- (void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate {
+    CLLocation *selectedLocation = [[CLLocation alloc]initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    NSDictionary *parameters = @{@"location": selectedLocation, @"opennow":@"", @"pagetoken":@"", @"resetPreviousResults":@YES};
+    __weak typeof(self) weakself = self;
+    [self.model downloadAtmArrayWithParameters:parameters withCompletionHandler:^(NSArray *results) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            GMSCameraPosition *currentLocationCameraPosition = [GMSCameraPosition cameraWithLatitude:selectedLocation.coordinate.latitude longitude:selectedLocation.coordinate.longitude zoom:14];
+            [((GMSMapView *)weakself.view) setCamera:currentLocationCameraPosition];
+            for (SLVATMModel *atm in results) {
+                CLLocationCoordinate2D markerPosition = CLLocationCoordinate2DMake([atm.latitude doubleValue], [atm.longitude doubleValue]);
+                GMSMarker *marker = [GMSMarker markerWithPosition:markerPosition];
+                marker.title = atm.name;
+                marker.snippet = [NSString stringWithFormat:@"%@ | %@",atm.openNow, atm.adress];
+                marker.map = ((GMSMapView *)weakself.view);
+                if ([atm.openNow isEqualToString:@"closed"]){
+                    marker.icon = [GMSMarker markerImageWithColor:[UIColor lightGrayColor]];
+                }
+            }
+        });
     }];
 }
 
@@ -148,6 +172,11 @@
 -(IBAction)zoomOut:(id)sender{
     self.currentZoom--;
     [((GMSMapView*)self.view)animateToZoom:self.currentZoom];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    self.model.atmsArray = nil;
 }
 
 @end
