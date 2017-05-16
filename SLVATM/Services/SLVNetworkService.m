@@ -12,7 +12,6 @@
 @property (strong,nonatomic,readonly) NSURLSession *session;
 @end
 
-
 @implementation SLVNetworkService
 
 -(instancetype)init{
