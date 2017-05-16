@@ -55,6 +55,11 @@ static NSString *const apiKey = @"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0";
 }
 
 - (void)downloadAtmArrayWithParameters:(NSDictionary *)parameters withCompletionHandler:(void (^)(NSArray *results))completionHandler {
+    if ([parameters[@"resetPreviousResults"] isEqual:@YES]){
+        self.atmsArray = [NSArray new];
+        self.nextPageToken = @"";
+        NSLog(@"new location so i reset results");
+    }
     CLLocation *location = parameters[@"location"];
     if (!location){
         location=self.slvLocationService.location;
@@ -101,7 +106,6 @@ static NSString *const apiKey = @"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0";
     
     NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/directions/json?%@&%@&%@&key=&%@",origin,destination,mode,key];
     
-    __weak typeof(self) weakself=self;
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSURLSessionDataTask *task = [session dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error){
