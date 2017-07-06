@@ -11,9 +11,9 @@
 
 @implementation SLVTableViewCell
 
-- (instancetype) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self){
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
         _name = [UILabel new];
         _adress = [UILabel new];
         _adress.font = [UIFont systemFontOfSize:14];
@@ -22,30 +22,25 @@
         _distance.textAlignment = NSTextAlignmentCenter;
         _distance.font = [UIFont systemFontOfSize:10];
         _logo = [UIImageView new];
-        _logo.layer.masksToBounds=YES;
-        _logo.layer.cornerRadius=20;
-        _logo.layer.borderWidth=1;
-        _logo.layer.borderColor=[UIColor lightGrayColor].CGColor;
+        _logo.layer.masksToBounds = YES;
+        _logo.layer.cornerRadius = 20;
+        _logo.layer.borderWidth = 1;
+        _logo.layer.borderColor = [UIColor lightGrayColor].CGColor;
         _logo.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.5];
         
         NSArray *views = @[_name, _adress, _openNow, _distance,_logo];
         for (id view in views) {
-            [SLVTableViewCell decorateView:view];
             [self addSubview:view];
         }
     }
     return self;
 }
 
-+ (void)decorateView:(UIView *)view{
-   // view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:0 alpha:0.5];
-}
-
-+ (BOOL)requiresConstraintBasedLayout{
++ (BOOL)requiresConstraintBasedLayout {
     return YES;
 }
 
-- (void)updateConstraints{
+- (void)updateConstraints {
     UIEdgeInsets padding =UIEdgeInsetsMake(6, 8, 4, 8);
     UIView *contentView = self.contentView;
     

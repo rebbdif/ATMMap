@@ -10,25 +10,25 @@
 
 @implementation SLVATMModel
 
-+ (SLVATMModel *)atmWithDictionary: (NSDictionary *)dictionary{
++ (SLVATMModel *)atmWithDictionary:(NSDictionary *)dictionary {
     SLVATMModel *atm = [SLVATMModel new];
     atm.name = dictionary[@"name"];
     atm.adress = dictionary[@"vicinity"];
-    [dictionary[@"opening_hours"][@"open_now"] boolValue]?(atm.openNow=@"open"):(atm.openNow=@"closed");
+    [dictionary[@"opening_hours"][@"open_now"] boolValue] ? (atm.openNow=@"open") : (atm.openNow=@"closed");
     
-    NSSet *types=[NSSet setWithArray:dictionary[@"types"]];
-    if ([types containsObject:@"atm"]){
+    NSSet *types = [NSSet setWithArray:dictionary[@"types"]];
+    if ([types containsObject:@"atm"]) {
         atm.type=@"atm";
-    }else if([types containsObject:@"bank"]){
+    } else if ([types containsObject:@"bank"]) {
         atm.type=@"bank";
-    }else{
+    } else {
         atm.type=@"?";
     }
-    atm.weekDays=dictionary[@"weekday_text"];
+    atm.weekDays = dictionary[@"weekday_text"];
     
     NSDictionary *coordinate = dictionary[@"geometry"][@"location"];
-    atm.latitude=coordinate[@"lat"];
-    atm.longitude=coordinate[@"lng"];
+    atm.latitude = coordinate[@"lat"];
+    atm.longitude = coordinate[@"lng"];
     
     return atm;
 }

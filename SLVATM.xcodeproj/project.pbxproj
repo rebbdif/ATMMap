@@ -12,9 +12,9 @@
 		63112E041EC0C37F00920A75 /* SLVNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 63112E031EC0C37F00920A75 /* SLVNetworkService.m */; };
 		636E55BC1EC37A0E005D0219 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636E55BB1EC37A0E005D0219 /* Launch Screen.storyboard */; };
 		636E55BF1EC46996005D0219 /* SLVLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 636E55BE1EC46996005D0219 /* SLVLocationService.m */; };
-		636E55C21EC696B9005D0219 /* Decorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 636E55C11EC696B9005D0219 /* Decorator.m */; };
+		636E55C21EC696B9005D0219 /* SLVDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 636E55C11EC696B9005D0219 /* SLVDecorator.m */; };
 		63ACEF831EC0A87B007C0D41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEF821EC0A87B007C0D41 /* main.m */; };
-		63ACEF861EC0A87B007C0D41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEF851EC0A87B007C0D41 /* AppDelegate.m */; };
+		63ACEF861EC0A87B007C0D41 /* SLVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEF851EC0A87B007C0D41 /* SLVAppDelegate.m */; };
 		63ACEF8E1EC0A87B007C0D41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63ACEF8D1EC0A87B007C0D41 /* Assets.xcassets */; };
 		63ACEF9C1EC0A87B007C0D41 /* SLVATMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEF9B1EC0A87B007C0D41 /* SLVATMTests.m */; };
 		63ACEFAD1EC0A931007C0D41 /* SLVMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ACEFAC1EC0A931007C0D41 /* SLVMapViewController.m */; };
@@ -45,12 +45,12 @@
 		636E55BB1EC37A0E005D0219 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		636E55BD1EC46996005D0219 /* SLVLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVLocationService.h; path = Services/SLVLocationService.h; sourceTree = "<group>"; };
 		636E55BE1EC46996005D0219 /* SLVLocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVLocationService.m; path = Services/SLVLocationService.m; sourceTree = "<group>"; };
-		636E55C01EC696B9005D0219 /* Decorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Decorator.h; path = Views/Decorator.h; sourceTree = "<group>"; };
-		636E55C11EC696B9005D0219 /* Decorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Decorator.m; path = Views/Decorator.m; sourceTree = "<group>"; };
+		636E55C01EC696B9005D0219 /* SLVDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLVDecorator.h; path = Views/SLVDecorator.h; sourceTree = "<group>"; };
+		636E55C11EC696B9005D0219 /* SLVDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLVDecorator.m; path = Views/SLVDecorator.m; sourceTree = "<group>"; };
 		63ACEF7E1EC0A87B007C0D41 /* SLVATM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLVATM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63ACEF821EC0A87B007C0D41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		63ACEF841EC0A87B007C0D41 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		63ACEF851EC0A87B007C0D41 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		63ACEF841EC0A87B007C0D41 /* SLVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLVAppDelegate.h; sourceTree = "<group>"; };
+		63ACEF851EC0A87B007C0D41 /* SLVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLVAppDelegate.m; sourceTree = "<group>"; };
 		63ACEF8D1EC0A87B007C0D41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63ACEF921EC0A87B007C0D41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63ACEF971EC0A87B007C0D41 /* SLVATMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLVATMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,8 +95,8 @@
 		63112DFE1EC0C0CF00920A75 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
-				636E55C01EC696B9005D0219 /* Decorator.h */,
-				636E55C11EC696B9005D0219 /* Decorator.m */,
+				636E55C01EC696B9005D0219 /* SLVDecorator.h */,
+				636E55C11EC696B9005D0219 /* SLVDecorator.m */,
 				63112DFB1EC0C0C100920A75 /* SLVTableViewCell.h */,
 				63112DFC1EC0C0C100920A75 /* SLVTableViewCell.m */,
 			);
@@ -168,8 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				636E55BB1EC37A0E005D0219 /* Launch Screen.storyboard */,
-				63ACEF841EC0A87B007C0D41 /* AppDelegate.h */,
-				63ACEF851EC0A87B007C0D41 /* AppDelegate.m */,
+				63ACEF841EC0A87B007C0D41 /* SLVAppDelegate.h */,
+				63ACEF851EC0A87B007C0D41 /* SLVAppDelegate.m */,
 				63ACEF8D1EC0A87B007C0D41 /* Assets.xcassets */,
 				63ACEF921EC0A87B007C0D41 /* Info.plist */,
 			);
@@ -363,14 +363,14 @@
 			files = (
 				63112E041EC0C37F00920A75 /* SLVNetworkService.m in Sources */,
 				63112E011EC0C10A00920A75 /* SLVTableModel.m in Sources */,
-				63ACEF861EC0A87B007C0D41 /* AppDelegate.m in Sources */,
+				63ACEF861EC0A87B007C0D41 /* SLVAppDelegate.m in Sources */,
 				636E55BF1EC46996005D0219 /* SLVLocationService.m in Sources */,
 				63ACEF831EC0A87B007C0D41 /* main.m in Sources */,
 				63ACEFB01EC0A954007C0D41 /* SVLTableViewController.m in Sources */,
 				63112DFD1EC0C0C100920A75 /* SLVTableViewCell.m in Sources */,
 				63ACEFB31EC0AB43007C0D41 /* SLVATMModel.m in Sources */,
 				63ACEFAD1EC0A931007C0D41 /* SLVMapViewController.m in Sources */,
-				636E55C21EC696B9005D0219 /* Decorator.m in Sources */,
+				636E55C21EC696B9005D0219 /* SLVDecorator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

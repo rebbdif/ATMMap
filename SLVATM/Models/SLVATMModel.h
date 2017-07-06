@@ -11,19 +11,19 @@
 
 @interface SLVATMModel : NSObject
 
-@property (strong,nonatomic) NSString *name;
-@property (strong,nonatomic) NSString *adress;
-@property (strong,nonatomic) NSString *openNow;
-@property (strong,nonatomic) NSString *type;
-@property (strong,nonatomic) NSString *weekDays;
+@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *adress;
+@property (copy, nonatomic) NSString *openNow;
+@property (copy, nonatomic) NSString *type;
+@property (copy, nonatomic) NSString *weekDays;
 
-@property (strong,nonatomic) NSNumber *latitude;
-@property (strong,nonatomic) NSNumber *longitude;
+@property (strong, nonatomic) NSNumber *latitude;
+@property (strong, nonatomic) NSNumber *longitude;
 
-@property (strong,nonatomic) NSString *logoURL;
-@property (strong,nonatomic) UIImage *logo;
-@property (strong,nonatomic) NSNumber *distance;
+@property (copy, nonatomic) NSString *logoURL;
+@property (strong, nonatomic) UIImage *logo;
+@property (strong, nonatomic) NSNumber *distance;
 
-+ (SLVATMModel *)atmWithDictionary: (NSDictionary *)dictionary;
++ (SLVATMModel *)atmWithDictionary:(NSDictionary *)dictionary;
 
 @end

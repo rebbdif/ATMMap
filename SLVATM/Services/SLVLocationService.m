@@ -11,18 +11,18 @@
 
 @interface SLVLocationService()<CLLocationManagerDelegate>
 
-@property (nonatomic, copy, nullable) void (^completionHandler)(NSDictionary *, NSError *);
-@property (assign,nonatomic) CLAuthorizationStatus previousAuthorizationStatus;
+@property (copy, nonatomic, nullable) void (^completionHandler)(NSDictionary *, NSError *);
+@property (assign, nonatomic) CLAuthorizationStatus previousAuthorizationStatus;
 
 @end
 
 @implementation SLVLocationService
 
-- (void) getLocationWithCompletionHandler:(void (^_Nullable)(NSDictionary * _Nullable parameters, NSError *_Nullable error))completionHandler{
+- (void)getLocationWithCompletionHandler:(void (^_Nullable)(NSDictionary * _Nullable parameters, NSError *_Nullable error))completionHandler{
     if (!self.locationManager) {
         self.locationManager = [CLLocationManager new];
-        self.locationManager.delegate=self;
-        self.locationManager.desiredAccuracy= kCLLocationAccuracyHundredMeters;
+        self.locationManager.delegate = self;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
         self.locationManager.distanceFilter = 500;
         self.locationManager.headingFilter = 10;
     }
@@ -32,17 +32,17 @@
     } else {
         [self.locationManager startUpdatingLocation];
     }
-    self.completionHandler=completionHandler;
+    self.completionHandler = completionHandler;
 }
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
-    if (self.previousAuthorizationStatus!=4) {
-        if (status==4){
+    if (self.previousAuthorizationStatus != 4) {
+        if (status == 4){
             [self.locationManager startUpdatingLocation];
-        } if (status ==2){
+        } if (status == 2){
             NSString *errorMessage = @"Вам необходимо разрешить приложению доступ к геолокации. Вы можете сделать это в настройках";
             NSError *humanUnderstandableError = [NSError errorWithDomain:kCLErrorDomain code:1 userInfo:@{@"info":errorMessage}];
-            self.completionHandler(nil,humanUnderstandableError);
+            self.completionHandler(nil, humanUnderstandableError);
         }
     }
 }
