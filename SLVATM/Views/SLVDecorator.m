@@ -6,9 +6,9 @@
 //  Copyright © 2017 serebryanyy. All rights reserved.
 //
 
-#import "Decorator.h"
+#import "SLVDecorator.h"
 
-@implementation Decorator
+@implementation SLVDecorator
 
 + (UIButton *)roundButtonWithlabel:(NSString*)label image:(UIImage*)image frame:(CGRect)frame {
     UIButton *button = [UIButton new];

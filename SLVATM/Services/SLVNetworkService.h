@@ -10,6 +10,6 @@
 
 @interface SLVNetworkService : NSObject
 
-- (void)downloadDataFromUrl: (NSURL *)url withCompletionHandler: (void (^)(NSData *data))completionHandler;
+- (void)downloadDataFromUrl:(NSURL *)url withCompletionHandler:(void (^)(NSData *data))completionHandler;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Decorator : UIView
+@interface SLVDecorator : UIView
 
 + (UIButton *)roundButtonWithlabel:(NSString*)label image:(UIImage*)image frame:(CGRect)frame;
 
