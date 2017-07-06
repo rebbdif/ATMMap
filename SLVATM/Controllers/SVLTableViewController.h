@@ -12,6 +12,6 @@
 
 @interface SVLTableViewController : UIViewController
 
-@property (strong,nonatomic) SLVTableModel *model;
+@property (strong, nonatomic) SLVTableModel *model;
 
 @end

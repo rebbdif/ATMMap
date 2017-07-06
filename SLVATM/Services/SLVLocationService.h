@@ -11,10 +11,9 @@
 
 @interface SLVLocationService : NSObject
 
-@property(strong,nonatomic) CLLocation *location;
-@property(strong,nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *location;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
-- (void) getLocationWithCompletionHandler:(void (^_Nullable)(NSDictionary * _Nullable parameters, NSError *_Nullable error))completionHandler;
-
+- (void)getLocationWithCompletionHandler:(void (^_Nullable)(NSDictionary * _Nullable parameters, NSError *_Nullable error))completionHandler;
 
 @end

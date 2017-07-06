@@ -6,18 +6,18 @@
 //  Copyright © 2017 serebryanyy. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "SLVAppDelegate.h"
 #import "SLVMapViewController.h"
 #import "SVLTableViewController.h"
 #import "SLVTableModel.h"
 
 @import GoogleMaps;
 
-@interface AppDelegate ()
+@interface SLVAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation SLVAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [GMSServices provideAPIKey:@"AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0"];
@@ -29,11 +29,11 @@
     tableViewController.model = model;
     tableViewController.title = @"table";
     UITabBarController *tabBarController = [UITabBarController new];
-    tabBarController.viewControllers=@[tableViewController, mapViewController];
+    tabBarController.viewControllers = @[tableViewController, mapViewController];
     [tabBarController.tabBar.items[0] setImage:[[UIImage imageNamed:@"tableTabbarImage"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [tabBarController.tabBar.items[1] setImage:[[UIImage imageNamed:@"mapTabbarImage"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     tabBarController.selectedIndex = 0;
-    self.window= [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

@@ -13,10 +13,10 @@
 #import "SLVLocationService.h"
 @import CoreLocation;
 
-@interface SVLTableViewController () <UITableViewDelegate,UITableViewDataSource, UITabBarControllerDelegate>
+@interface SVLTableViewController () <UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate>
 
-@property (strong,nonatomic) UITableView *tableView;
-@property (strong,nonatomic) SLVLocationService *slvLocationService;
+@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) SLVLocationService *slvLocationService;
 
 @end
 
@@ -28,9 +28,9 @@ static NSString * const reuseID = @"atmCell";
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     CGRect frame = self.view.frame;
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 20, CGRectGetWidth(frame), CGRectGetHeight(frame)-64)];
-    self.tableView.dataSource=self;
-    self.tableView.delegate=self;
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 20, CGRectGetWidth(frame), CGRectGetHeight(frame) - 64)];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     [self.tableView registerClass:[SLVTableViewCell class] forCellReuseIdentifier:reuseID];
     self.tableView.rowHeight = 64;
     [self.view addSubview:self.tableView];
@@ -40,8 +40,8 @@ static NSString * const reuseID = @"atmCell";
     [super viewDidAppear:animated];
     __weak typeof(self) weakself = self;
     [self.model runWithCompletionHandler:^(NSArray *results, NSError *error) {
-        if (!results){
-            UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"location error" message:error.userInfo[@"info"] preferredStyle:UIAlertControllerStyleAlert];
+        if (!results) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"location error" message:error.userInfo[@"info"] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
             [alert addAction:okAction];
             [self presentViewController:alert animated:YES completion:nil];
@@ -56,30 +56,30 @@ static NSString * const reuseID = @"atmCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SLVTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
     SLVATMModel *currentAtm = self.model.atmsArray[indexPath.row];
-    cell.name.text=currentAtm.name;
-    cell.adress.text=currentAtm.adress;
+    cell.name.text = currentAtm.name;
+    cell.adress.text = currentAtm.adress;
     CGSize textSize = [currentAtm.adress sizeWithAttributes:@{@"NSFontAttributeName": currentAtm.adress}];
-    if (textSize.width>cell.adress.bounds.size.width+20) {
-        cell.adress.numberOfLines=2;
-        cell.adress.adjustsFontSizeToFitWidth=YES;
+    if (textSize.width > cell.adress.bounds.size.width + 20) {
+        cell.adress.numberOfLines = 2;
+        cell.adress.adjustsFontSizeToFitWidth = YES;
     }else {
-        cell.adress.numberOfLines=1;
+        cell.adress.numberOfLines = 1;
     }
-    cell.openNow.text=currentAtm.openNow;
+    cell.openNow.text = currentAtm.openNow;
     if([cell.openNow.text isEqualToString:@"closed"]) {
-        cell.openNow.textColor=[UIColor lightGrayColor];
+        cell.openNow.textColor = [UIColor lightGrayColor];
     }else {
-        cell.openNow.textColor=[UIColor blackColor];
+        cell.openNow.textColor = [UIColor blackColor];
     }
-    cell.distance.text=[NSString stringWithFormat:@"%@", (currentAtm.distance)?(currentAtm.distance):@" "];
+    cell.distance.text = [NSString stringWithFormat:@"%@", (currentAtm.distance) ? (currentAtm.distance):@" "];
     if (!currentAtm.logo) {
         if ([currentAtm.type isEqual:@"atm"]) {
             cell.logo.image = [UIImage imageNamed:@"atm"];
-        }else if ([currentAtm.type isEqual:@"bank"]) {
+        } else if ([currentAtm.type isEqual:@"bank"]) {
             cell.logo.image = [UIImage imageNamed:@"bank"];
         }
     }
-    if (indexPath.row==self.model.atmsArray.count-1 && indexPath.row>15) {
+    if (indexPath.row == self.model.atmsArray.count - 1 && indexPath.row > 15) {
         NSDictionary *parameters = @{@"opennow":@"", @"pagetoken":@"pagetoken"};
         __weak typeof(self) weakself = self;
         [self.model downloadAtmArrayWithParameters:parameters withCompletionHandler:^(NSArray *results) {
