@@ -148,21 +148,23 @@
 }
 
 - (void)buildRoute:(NSDictionary *)json forView:(UIView *)view {
-    GMSMutablePath *path = [GMSMutablePath path];
-    NSDictionary *route = json[@"routes"][0];
-    NSDictionary *legs = route[@"legs"][0];
-    NSArray *steps = legs[@"steps"];
-    for (NSDictionary * step in steps) {
-        NSDictionary *startLocation = step[@"start_location"];
-        NSDictionary *endLocation = step[@"end_location"];
-        [path addLatitude:[startLocation[@"lat"]doubleValue] longitude:[startLocation[@"lng"]doubleValue]];
-        [path addLatitude:[endLocation[@"lat"]doubleValue] longitude:[endLocation[@"lng"]doubleValue]];
+    if (json[@"routes"]) {
+        GMSMutablePath *path = [GMSMutablePath path];
+        NSDictionary *route = json[@"routes"][0];
+        NSDictionary *legs = route[@"legs"][0];
+        NSArray *steps = legs[@"steps"];
+        for (NSDictionary * step in steps) {
+            NSDictionary *startLocation = step[@"start_location"];
+            NSDictionary *endLocation = step[@"end_location"];
+            [path addLatitude:[startLocation[@"lat"]doubleValue] longitude:[startLocation[@"lng"]doubleValue]];
+            [path addLatitude:[endLocation[@"lat"]doubleValue] longitude:[endLocation[@"lng"]doubleValue]];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
+            polyline.strokeWidth = 2.0;
+            polyline.map=((GMSMapView *)view);
+        });
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
-        polyline.strokeWidth = 2.0;
-        polyline.map=((GMSMapView *)view);
-    });
 }
 
 -(IBAction)zoomIn:(id)sender{

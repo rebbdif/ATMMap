@@ -83,13 +83,23 @@ static const char apiKeyChar[] = "AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0";
             } else {
                 NSMutableArray *newItems = [NSMutableArray new];
                 for (NSDictionary *dict in json[@"results"]) {
-                    [newItems addObject:[SLVATMModel atmWithDictionary:dict]];
+                    SLVATMModel *newAtm =[SLVATMModel atmWithDictionary:dict];
+                    [newItems addObject: newAtm];
+                    __weak typeof(self) weakself = self;
+                    dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
+                        [weakself downloadRouteFromLocation:weakself.slvLocationService.location.coordinate toLocation:CLLocationCoordinate2DMake([newAtm.latitude doubleValue], [newAtm.longitude doubleValue]) withPresentingCompletionHandler:^(NSDictionary *json) {
+                            newAtm.distance = json[@"results"][@"distance"];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                ///ui stuff
+                            });
+                        }];
+                    });
                 }
                 self.atmsArray = [self.atmsArray arrayByAddingObjectsFromArray:newItems];
-                NSLog(@"sel.atmsarray.count%lu", (unsigned long)self.atmsArray.count);
-                if ([json objectForKey:@"next_page_token"]) {
+                NSLog(@"sel.atmsarray.count%lu",(unsigned long)self.atmsArray.count);
+                if ([json objectForKey:@"next_page_token"]){
                     self.nextPageToken = json[@"next_page_token"];
-                } else {
+                }else{
                     self.nextPageToken = @"ended";
                 }
                 completionHandler(self.atmsArray);
@@ -97,7 +107,6 @@ static const char apiKeyChar[] = "AIzaSyCazMVbBSXWGczcdsVJfQTuEwJlOAIg4V0";
         }
     }];
 }
-
 - (void)downloadRouteFromLocation:(CLLocationCoordinate2D)start toLocation:(CLLocationCoordinate2D)finish withPresentingCompletionHandler:(void (^)(NSDictionary* json)) presentinCompletionHandler  {
     NSString *origin = [NSString stringWithFormat:@"origin=%f,%f", start.latitude, start.longitude];
     NSString *destination = [NSString stringWithFormat:@"destination=%f,%f", finish.latitude, finish.longitude];
